@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#000000;
@@ -193,6 +194,39 @@
     .proj-art{min-height:200px;}
     .two-col{grid-template-columns:1fr;}
   }
+  /* ---------- LANGUAGE TOGGLE ---------- */
+  .lang-btn{
+    background:transparent;border:1px solid var(--accent);color:var(--accent);
+    font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;
+    padding:7px 16px;border-radius:30px;transition:background .25s,color .25s,transform .25s;
+    min-width:78px;
+  }
+  .lang-btn:hover{background:var(--accent);color:#04121d;transform:translateY(-2px);}
+  .nav-right{display:flex;align-items:center;gap:24px;}
+  @media(max-width:760px){.nav-right{gap:14px;}}
+
+  /* ---------- ARABIC / RTL MODE ---------- */
+  body.ar{font-family:'Cairo',sans-serif;}
+  body.ar .brand,
+  body.ar .hero h1,
+  body.ar .sec-head h2,
+  body.ar .sec-num,
+  body.ar .proj-body h3,
+  body.ar footer h2,
+  body.ar .tl-date,
+  body.ar .info-card .lbl,
+  body.ar .info-card .yr{font-family:'Cairo',sans-serif;}
+  body.ar .hero h1{letter-spacing:0;line-height:1.15;}
+  body.ar .eyebrow,
+  body.ar .proj-body .kicker{text-transform:none;letter-spacing:1px;}
+
+  html[dir="rtl"] .timeline{padding-left:0;padding-right:30px;}
+  html[dir="rtl"] .timeline::before{left:auto;right:7px;}
+  html[dir="rtl"] .tl-item::before{left:auto;right:-30px;}
+  html[dir="rtl"] .tl-item li{padding-left:0;padding-right:20px;}
+  html[dir="rtl"] .tl-item li::before{left:auto;right:0;}
+  html[dir="rtl"] .nav-links a::after{left:auto;right:0;}
+  html[dir="rtl"] .timeline::before{background:linear-gradient(var(--accent),transparent);}
 </style>
 </head>
 <body>
@@ -200,13 +234,16 @@
   <!-- NAV -->
   <nav>
     <div class="wrap">
-      <div class="brand">Ahmed <span>Hanafi</span></div>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+      <div class="brand" data-en='Ahmed <span>Hanafi</span>' data-ar='أحمد <span>حنفي</span>'>Ahmed <span>Hanafi</span></div>
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="#about" data-en='About' data-ar='نبذة'>About</a>
+          <a href="#experience" data-en='Experience' data-ar='الخبرات'>Experience</a>
+          <a href="#skills" data-en='Skills' data-ar='المهارات'>Skills</a>
+          <a href="#projects" data-en='Projects' data-ar='المشاريع'>Projects</a>
+          <a href="#contact" data-en='Contact' data-ar='تواصل'>Contact</a>
+        </div>
+        <button class="lang-btn" id="langBtn" type="button" aria-label="Toggle language">العربية</button>
       </div>
     </div>
   </nav>
@@ -215,14 +252,14 @@
   <header class="hero">
     <div class="wrap hero-grid">
       <div>
-        <span class="eyebrow">Sales &nbsp;·&nbsp; Front-End</span>
-        <h1>Ahmed Mahmoud <em>Hanafi</em></h1>
-        <div class="role">Sales Representative &nbsp;|&nbsp; Customer Service</div>
-        <p class="lead">Results-driven sales &amp; customer service professional with experience across digital marketing, insurance, and support — now bringing a front-end (HTML &amp; CSS) edge to client engagement.</p>
+        <span class="eyebrow" data-en='Sales &nbsp;·&nbsp; Front-End' data-ar='مبيعات &nbsp;·&nbsp; واجهات أمامية'>Sales &nbsp;·&nbsp; Front-End</span>
+        <h1 data-en='Ahmed Mahmoud <em>Hanafi</em>' data-ar='أحمد محمود <em>حنفي</em>'>Ahmed Mahmoud <em>Hanafi</em></h1>
+        <div class="role" data-en='Sales Representative &nbsp;|&nbsp; Customer Service' data-ar='مندوب مبيعات &nbsp;|&nbsp; خدمة عملاء'>Sales Representative &nbsp;|&nbsp; Customer Service</div>
+        <p class="lead" data-en='Results-driven sales &amp; customer service professional with experience across digital marketing, insurance, and support — now bringing a front-end (HTML &amp; CSS) edge to client engagement.' data-ar='محترف مبيعات وخدمة عملاء يركّز على تحقيق النتائج، بخبرة في التسويق الرقمي والتأمين والدعم — وأضيف الآن لمسة تطوير الواجهات الأمامية (HTML و CSS) للتعامل مع العملاء.'>Results-driven sales &amp; customer service professional with experience across digital marketing, insurance, and support — now bringing a front-end (HTML &amp; CSS) edge to client engagement.</p>
         <div class="chips">
           <a class="chip" href="mailto:Hanafi782001@gmail.com"><span class="ico">✉</span> Hanafi782001@gmail.com</a>
           <a class="chip" href="https://wa.me/201149173677" target="_blank"><span class="ico">✆</span> 01149173677</a>
-          <span class="chip"><span class="ico">⌖</span> Cairo, Egypt</span>
+          <span class="chip" data-en='<span class="ico">⌖</span> Cairo, Egypt' data-ar='<span class="ico">⌖</span> القاهرة، مصر'><span class="ico">⌖</span> Cairo, Egypt</span>
           <a class="chip" href="https://github.com/Ahmed-Mahmoud2" target="_blank"><span class="ico">◇</span> GitHub</a>
           <a class="chip" href="https://www.linkedin.com/in/ahmed-hanafi-b1b117282" target="_blank"><span class="ico">in</span> LinkedIn</a>
         </div>
@@ -236,9 +273,9 @@
   <!-- ABOUT -->
   <section class="block" id="about">
     <div class="wrap">
-      <div class="sec-head reveal"><span class="sec-num">01</span><h2>About</h2></div>
+      <div class="sec-head reveal"><span class="sec-num">01</span><h2 data-en='About' data-ar='نبذة عني'>About</h2></div>
       <div class="about reveal">
-        <p>I’m a sales and customer-service professional who enjoys understanding people and matching them with the right solution. I’ve worked in <strong>digital marketing sales, life insurance, and telecom support</strong>, building strong client relationships and closing deals along the way. Recently I’ve been teaching myself <strong>front-end web development</strong> — turning what I learn into real projects — to combine communication skills with a modern, digital mindset.</p>
+        <p data-en='I’m a sales and customer-service professional who enjoys understanding people and matching them with the right solution. I’ve worked in <strong>digital marketing sales, life insurance, and telecom support</strong>, building strong client relationships and closing deals along the way. Recently I’ve been teaching myself <strong>front-end web development</strong> — turning what I learn into real projects — to combine communication skills with a modern, digital mindset.' data-ar='أنا محترف في المبيعات وخدمة العملاء أستمتع بفهم الناس ومساعدتهم في الوصول للحل المناسب. عملت في <strong>مبيعات التسويق الرقمي، والتأمين على الحياة، ودعم الاتصالات</strong>، وبنيت علاقات قوية مع العملاء وأتممت صفقات على طول الطريق. ومؤخرًا أتعلّم بنفسي <strong>تطوير واجهات الويب الأمامية</strong> — وأحوّل ما أتعلمه إلى مشاريع حقيقية — لأجمع بين مهارات التواصل وعقلية رقمية حديثة.'>I’m a sales and customer-service professional who enjoys understanding people and matching them with the right solution. I’ve worked in <strong>digital marketing sales, life insurance, and telecom support</strong>, building strong client relationships and closing deals along the way. Recently I’ve been teaching myself <strong>front-end web development</strong> — turning what I learn into real projects — to combine communication skills with a modern, digital mindset.</p>
       </div>
     </div>
   </section>
@@ -246,39 +283,39 @@
   <!-- EXPERIENCE -->
   <section class="block" id="experience">
     <div class="wrap">
-      <div class="sec-head reveal"><span class="sec-num">02</span><h2>Experience</h2></div>
+      <div class="sec-head reveal"><span class="sec-num">02</span><h2 data-en='Experience' data-ar='الخبرات العملية'>Experience</h2></div>
       <div class="timeline">
         <div class="tl-item reveal">
           <div class="tl-top">
-            <div><span class="tl-role">Sales Representative</span> &nbsp;<span class="tl-co">3Pearl — Digital Marketing Agency</span></div>
-            <span class="tl-date">Oct 2025 — Present</span>
+            <div><span class="tl-role" data-en='Sales Representative' data-ar='مندوب مبيعات'>Sales Representative</span> &nbsp;<span class="tl-co" data-en='3Pearl — Digital Marketing Agency' data-ar='3Pearl — وكالة تسويق رقمي'>3Pearl — Digital Marketing Agency</span></div>
+            <span class="tl-date" data-en='Oct 2025 — Present' data-ar='أكتوبر 2025 — حتى الآن'>Oct 2025 — Present</span>
           </div>
           <ul>
-            <li>Sell digital marketing services and solutions to new and existing clients.</li>
-            <li>Identify client needs and recommend suitable packages to drive revenue.</li>
-            <li>Manage the full sales cycle from prospecting and outreach to closing.</li>
-            <li>Build long-term relationships that encourage repeat business and referrals.</li>
+            <li data-en='Sell digital marketing services and solutions to new and existing clients.' data-ar='بيع خدمات وحلول التسويق الرقمي للعملاء الجدد والحاليين.'>Sell digital marketing services and solutions to new and existing clients.</li>
+            <li data-en='Identify client needs and recommend suitable packages to drive revenue.' data-ar='تحديد احتياجات العملاء واقتراح الباقات المناسبة لزيادة الإيرادات.'>Identify client needs and recommend suitable packages to drive revenue.</li>
+            <li data-en='Manage the full sales cycle from prospecting and outreach to closing.' data-ar='إدارة دورة المبيعات كاملة من البحث عن العملاء والتواصل حتى إتمام الصفقة.'>Manage the full sales cycle from prospecting and outreach to closing.</li>
+            <li data-en='Build long-term relationships that encourage repeat business and referrals.' data-ar='بناء علاقات طويلة المدى تشجّع على تكرار التعامل والترشيحات.'>Build long-term relationships that encourage repeat business and referrals.</li>
           </ul>
         </div>
         <div class="tl-item reveal">
           <div class="tl-top">
-            <div><span class="tl-role">Sales Agent</span> &nbsp;<span class="tl-co">Delta Life Insurance</span></div>
-            <span class="tl-date">2022</span>
+            <div><span class="tl-role" data-en='Sales Agent' data-ar='مندوب مبيعات'>Sales Agent</span> &nbsp;<span class="tl-co" data-en='Delta Life Insurance' data-ar='دلتا للتأمين على الحياة'>Delta Life Insurance</span></div>
+            <span class="tl-date" data-en='2022' data-ar='2022'>2022</span>
           </div>
           <ul>
-            <li>Promoted and sold life insurance products to prospective clients.</li>
-            <li>Explained policy benefits clearly and matched plans to customer needs.</li>
-            <li>Followed up on leads to convert prospects into long-term policyholders.</li>
+            <li data-en='Promoted and sold life insurance products to prospective clients.' data-ar='الترويج لمنتجات التأمين على الحياة وبيعها للعملاء المحتملين.'>Promoted and sold life insurance products to prospective clients.</li>
+            <li data-en='Explained policy benefits clearly and matched plans to customer needs.' data-ar='شرح مزايا الوثائق بوضوح ومطابقة الخطط مع احتياجات العملاء.'>Explained policy benefits clearly and matched plans to customer needs.</li>
+            <li data-en='Followed up on leads to convert prospects into long-term policyholders.' data-ar='متابعة العملاء المحتملين لتحويلهم إلى حاملي وثائق على المدى الطويل.'>Followed up on leads to convert prospects into long-term policyholders.</li>
           </ul>
         </div>
         <div class="tl-item reveal">
           <div class="tl-top">
-            <div><span class="tl-role">Customer Service Representative</span> &nbsp;<span class="tl-co">Vodafone</span></div>
-            <span class="tl-date">2021</span>
+            <div><span class="tl-role" data-en='Customer Service Representative' data-ar='ممثل خدمة عملاء'>Customer Service Representative</span> &nbsp;<span class="tl-co" data-en='Vodafone' data-ar='فودافون'>Vodafone</span></div>
+            <span class="tl-date" data-en='2021' data-ar='2021'>2021</span>
           </div>
           <ul>
-            <li>Handled customer inquiries and resolved issues professionally and efficiently.</li>
-            <li>Provided accurate information and maintained high satisfaction levels.</li>
+            <li data-en='Handled customer inquiries and resolved issues professionally and efficiently.' data-ar='التعامل مع استفسارات العملاء وحل المشكلات باحترافية وكفاءة.'>Handled customer inquiries and resolved issues professionally and efficiently.</li>
+            <li data-en='Provided accurate information and maintained high satisfaction levels.' data-ar='تقديم معلومات دقيقة والحفاظ على مستويات رضا عالية.'>Provided accurate information and maintained high satisfaction levels.</li>
           </ul>
         </div>
       </div>
@@ -288,18 +325,18 @@
   <!-- SKILLS -->
   <section class="block" id="skills">
     <div class="wrap">
-      <div class="sec-head reveal"><span class="sec-num">03</span><h2>Skills</h2></div>
+      <div class="sec-head reveal"><span class="sec-num">03</span><h2 data-en='Skills' data-ar='المهارات'>Skills</h2></div>
       <div class="skill-grid">
         <div class="skill-card reveal">
-          <h3>Front-End</h3>
-          <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Responsive Layout</span><span class="tag">Self-taught</span></div>
+          <h3 data-en='Front-End' data-ar='الواجهات الأمامية'>Front-End</h3>
+          <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag" data-en='Responsive Layout' data-ar='تصميم متجاوب'>Responsive Layout</span><span class="tag" data-en='Self-taught' data-ar='تعلّم ذاتي'>Self-taught</span></div>
         </div>
         <div class="skill-card reveal">
-          <h3>Sales &amp; Service</h3>
-          <div class="tags"><span class="tag">Negotiation</span><span class="tag">Client Relations</span><span class="tag">Lead Follow-up</span><span class="tag">Customer Support</span></div>
+          <h3 data-en='Sales &amp; Service' data-ar='المبيعات والخدمة'>Sales &amp; Service</h3>
+          <div class="tags"><span class="tag" data-en='Negotiation' data-ar='التفاوض'>Negotiation</span><span class="tag" data-en='Client Relations' data-ar='علاقات العملاء'>Client Relations</span><span class="tag" data-en='Lead Follow-up' data-ar='متابعة العملاء المحتملين'>Lead Follow-up</span><span class="tag" data-en='Customer Support' data-ar='دعم العملاء'>Customer Support</span></div>
         </div>
         <div class="skill-card reveal">
-          <h3>Tools</h3>
+          <h3 data-en='Tools' data-ar='الأدوات'>Tools</h3>
           <div class="tags"><span class="tag">MS Word</span><span class="tag">PowerPoint</span><span class="tag">Excel</span><span class="tag">GitHub</span></div>
         </div>
       </div>
@@ -309,18 +346,18 @@
   <!-- PROJECTS -->
   <section class="block" id="projects">
     <div class="wrap">
-      <div class="sec-head reveal"><span class="sec-num">04</span><h2>Projects</h2></div>
+      <div class="sec-head reveal"><span class="sec-num">04</span><h2 data-en='Projects' data-ar='المشاريع'>Projects</h2></div>
       <div class="proj reveal">
         <div class="proj-art">
           <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=80" alt="Burger menu project"
                onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=&quot;ph&quot;>🍔</span>');">
         </div>
         <div class="proj-body">
-          <div class="kicker">HTML &amp; CSS · Personal Project</div>
-          <h3>Burger Restaurant Menu</h3>
-          <p>A responsive restaurant menu page built from scratch — practising layout, image styling, price badges, and a dark, branded visual design.</p>
-          <div class="proj-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Responsive</span></div>
-          <a class="btn" href="https://ahmed-mahmoud2.github.io/burger-menu/" target="_blank">View Live Demo →</a>
+          <div class="kicker" data-en='HTML &amp; CSS · Personal Project' data-ar='HTML و CSS · مشروع شخصي'>HTML &amp; CSS · Personal Project</div>
+          <h3 data-en='Burger Restaurant Menu' data-ar='قائمة طعام مطعم برجر'>Burger Restaurant Menu</h3>
+          <p data-en='A responsive restaurant menu page built from scratch — practising layout, image styling, price badges, and a dark, branded visual design.' data-ar='صفحة قائمة طعام متجاوبة لمطعم تم بناؤها من الصفر — للتدرّب على التخطيط، وتنسيق الصور، وشارات الأسعار، وتصميم بصري داكن ومميّز.'>A responsive restaurant menu page built from scratch — practising layout, image styling, price badges, and a dark, branded visual design.</p>
+          <div class="proj-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag" data-en='Responsive' data-ar='متجاوب'>Responsive</span></div>
+          <a class="btn" href="https://ahmed-mahmoud2.github.io/burger-menu/" target="_blank" data-en='View Live Demo →' data-ar='عرض المشروع →'>View Live Demo →</a>
         </div>
       </div>
     </div>
@@ -329,27 +366,27 @@
   <!-- EDUCATION & LANGUAGES -->
   <section class="block" id="education">
     <div class="wrap">
-      <div class="sec-head reveal"><span class="sec-num">05</span><h2>Education &amp; Languages</h2></div>
+      <div class="sec-head reveal"><span class="sec-num">05</span><h2 data-en='Education &amp; Languages' data-ar='التعليم واللغات'>Education &amp; Languages</h2></div>
       <div class="two-col">
         <div class="info-card reveal">
-          <div class="lbl">Education</div>
-          <h3>Bachelor’s Degree in Sports Management</h3>
-          <div class="sub">Faculty of Physical Education, Helwan University</div>
-          <div class="yr" style="margin-top:8px;">Graduated 2023</div>
+          <div class="lbl" data-en='Education' data-ar='التعليم'>Education</div>
+          <h3 data-en='Bachelor’s Degree in Sports Management' data-ar='بكالوريوس في الإدارة الرياضية'>Bachelor’s Degree in Sports Management</h3>
+          <div class="sub" data-en='Faculty of Physical Education, Helwan University' data-ar='كلية التربية الرياضية، جامعة حلوان'>Faculty of Physical Education, Helwan University</div>
+          <div class="yr" style="margin-top:8px;" data-en='Graduated 2023' data-ar='تخرّج 2023'>Graduated 2023</div>
         </div>
         <div class="info-card reveal">
-          <div class="lbl">Languages</div>
-          <div class="lang-row"><span>Arabic</span></div>
-          <div class="lang-row"><span>English</span></div>
+          <div class="lbl" data-en='Languages' data-ar='اللغات'>Languages</div>
+          <div class="lang-row"><span data-en='Arabic' data-ar='العربية'>Arabic</span></div>
+          <div class="lang-row"><span data-en='English' data-ar='الإنجليزية'>English</span></div>
         </div>
       </div>
       <div class="info-card reveal" style="margin-top:24px;">
-        <div class="lbl">Personal Details</div>
+        <div class="lbl" data-en='Personal Details' data-ar='بيانات شخصية'>Personal Details</div>
         <div class="details">
-          <span><b>Age:</b> 25</span>
-          <span><b>Nationality:</b> Egyptian</span>
-          <span><b>Marital Status:</b> Single</span>
-          <span><b>Address:</b> Ard El-Lewa, Al-Mohandessin, Giza</span>
+          <span data-en='<b>Age:</b> 25' data-ar='<b>العمر:</b> 25'><b>Age:</b> 25</span>
+          <span data-en='<b>Nationality:</b> Egyptian' data-ar='<b>الجنسية:</b> مصري'><b>Nationality:</b> Egyptian</span>
+          <span data-en='<b>Marital Status:</b> Single' data-ar='<b>الحالة الاجتماعية:</b> أعزب'><b>Marital Status:</b> Single</span>
+          <span data-en='<b>Address:</b> Ard El-Lewa, Al-Mohandessin, Giza' data-ar='<b>العنوان:</b> أرض اللواء، المهندسين، الجيزة'><b>Address:</b> Ard El-Lewa, Al-Mohandessin, Giza</span>
         </div>
       </div>
     </div>
@@ -358,24 +395,47 @@
   <!-- CONTACT / FOOTER -->
   <footer id="contact">
     <div class="wrap">
-      <h2>Let’s work together</h2>
-      <p>Open to sales &amp; front-end opportunities. Feel free to reach out.</p>
+      <h2 data-en='Let’s work together' data-ar='لنعمل معًا'>Let’s work together</h2>
+      <p data-en='Open to sales &amp; front-end opportunities. Feel free to reach out.' data-ar='منفتح على فرص المبيعات وتطوير الواجهات الأمامية. لا تتردد في التواصل.'>Open to sales &amp; front-end opportunities. Feel free to reach out.</p>
       <div class="foot-chips">
-        <a class="btn" href="mailto:Hanafi782001@gmail.com">✉ Email Me</a>
-        <a class="btn ghost" href="https://wa.me/201149173677" target="_blank">✆ WhatsApp</a>
+        <a class="btn" href="mailto:Hanafi782001@gmail.com" data-en='✉ Email Me' data-ar='✉ راسلني'>✉ Email Me</a>
+        <a class="btn ghost" href="https://wa.me/201149173677" target="_blank" data-en='✆ WhatsApp' data-ar='✆ واتساب'>✆ WhatsApp</a>
         <a class="btn ghost" href="https://github.com/Ahmed-Mahmoud2" target="_blank">◇ GitHub</a>
-        <a class="btn ghost" href="https://www.linkedin.com/in/ahmed-hanafi-b1b117282" target="_blank">in · LinkedIn</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/ahmed-hanafi-b1b117282" target="_blank" data-en='in · LinkedIn' data-ar='in · لينكدإن'>in · LinkedIn</a>
       </div>
-      <div class="copyright">© <span id="yr"></span> Ahmed Mahmoud Hanafi · Built with HTML &amp; CSS</div>
+      <div class="copyright" data-en='© <span id="yr"></span> Ahmed Mahmoud Hanafi · Built with HTML &amp; CSS' data-ar='© <span id="yr"></span> أحمد محمود حنفي · بُني باستخدام HTML و CSS'>© <span id="yr"></span> Ahmed Mahmoud Hanafi · Built with HTML &amp; CSS</div>
     </div>
   </footer>
 
 <script>
-  document.getElementById('yr').textContent = new Date().getFullYear();
-  const obs = new IntersectionObserver((entries)=>{
-    entries.forEach((e,i)=>{ if(e.isIntersecting){ e.target.classList.add('show'); obs.unobserve(e.target);} });
-  },{threshold:.12});
-  document.querySelectorAll('.reveal').forEach((el,i)=>{ el.style.transitionDelay=(i%4*0.06)+'s'; obs.observe(el); });
+  const reveal = ()=>{
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach((e)=>{ if(e.isIntersecting){ e.target.classList.add('show'); obs.unobserve(e.target);} });
+    },{threshold:.12});
+    document.querySelectorAll('.reveal').forEach((el,i)=>{ el.style.transitionDelay=(i%4*0.06)+'s'; obs.observe(el); });
+  };
+
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+    document.body.classList.toggle('ar', lang === 'ar');
+    document.querySelectorAll('[data-en]').forEach(el=>{
+      const val = el.getAttribute('data-' + lang);
+      if(val !== null) el.innerHTML = val;
+    });
+    const yr = document.getElementById('yr');
+    if(yr) yr.textContent = new Date().getFullYear();
+    document.getElementById('langBtn').textContent = (lang === 'ar') ? 'English' : 'العربية';
+  }
+
+  let currentLang = 'en';
+  document.getElementById('langBtn').addEventListener('click', ()=>{
+    currentLang = (currentLang === 'en') ? 'ar' : 'en';
+    setLang(currentLang);
+  });
+
+  setLang('en');
+  reveal();
 </script>
 </body>
 </html>
